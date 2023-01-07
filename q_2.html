@@ -1,0 +1,24 @@
+<html>
+    <head></head>
+    <body>
+
+    </body>
+    <script>
+        N=7
+        A=[100,180,260,310,40,535,695]
+            let value=0
+            let buy = 0
+            let sell = 0
+            for (let i = 0; i <A.length; i++) {
+                for (let j = 1; j < A.length; j++) {
+                    let h=A[i]-A[j]
+                    if (h>value){
+                        num=h
+                        buy = i
+                        sell = j
+                    }    
+                }
+            }
+            console.log(sell,buy);
+    </script>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <body>
+    </body>
+    <script>
+        loan=[
+            [25000,'2022-12-18',10],
+            [50000,'2022-12-15',8],
+            [25000,'2022-12-09',10]
+        ]
+
+        holidays=['2022-12-24','2022-12-25','2022-12-30','2023-01-01']
+        let count=0;
+        let val3=[]
+        
+         function penality(loan){
+            loan.map((value,i)=>{
+                let a= new Date(value[1])
+                let b=new Date ()
+                // console.log(a);
+                // console.log(b);
+                const intialdate = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
+                const finaldate = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
+                // console.log(intialdate);
+                // console.log(finaldate);
+                let loanDate=finaldate-intialdate
+                let endDate = " ";
+                let noOfDaysToAdd = loanDate / (1000 * 3600 * 24)
+
+                while(count < noOfDaysToAdd){
+                  endDate = new Date(a.setDate(a.getDate()));
+                  if(endDate.getDay() != 0 ){
+                    count++
+                  }
+              }
+                console.log(endDate);
+                if(noOfDaysToAdd<=value[2]){
+                  val3.push(0)
+              }
+             else {
+                  let penalityday=(noOfDaysToAdd-value[2])
+                  val3.push( [(b.getFullYear()+"-"+b.getUTCMonth()+1+"-"+b.getUTCDate()),noOfDaysToAdd, data[0]*(2/100)*penalityday])
+              }  
+            })
+         }   
+       
+
+        penality(loan)
+
+        console.log(val3)
+    </script>
+</html>
